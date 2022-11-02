@@ -1,0 +1,35 @@
+import axios from 'axios'
+import * as cheerio from 'cheerio'
+
+// const main = async () => {
+//   try {
+//     const { data } = await axios.get('https://wdaweb.github.io/')
+//     const $ = cheerio.load(data)
+//     const courses = []
+//     $('#general .card-title').each(function () {
+//       courses.push($(this).text().trim())
+//     })
+//     console.log(courses)
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
+
+const main = async () => {
+  try {
+    const { data } = await axios.get('https://wdaweb.github.io/')
+    console.log(data)
+    const $ = cheerio.load(data)
+    const courses = []
+    $('#general .card-title').each(function () {
+      courses.push($(this).text().trim())
+    })
+    console.log(courses)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+main()
+// 測試爬蟲OK嗎?
+// 終端機 node test他
